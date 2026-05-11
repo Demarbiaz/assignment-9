@@ -8,33 +8,27 @@ fetchBtn.addEventListener("click", async () => {
 
   const searchTerm = searchInput.value;
 
+  if (!searchTerm) {
+    alert("Type something to search!");
+    return;
+  }
+
   gifContainer.innerHTML = "";
 
   const endpoint =
     `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=12&rating=g`;
 
-  try {
+  const response = await fetch(endpoint);
+  const data = await response.json();
 
-    const response = await fetch(endpoint);
+  console.log(data);
 
-    const data = await response.json();
-
-    console.log(data);
-
-    data.data.forEach((gif) => {
-
-      gifContainer.innerHTML += `
-        <div class="col-3 mb-3">
-          <img src="${gif.images.original.url}" class="img-fluid">
-        </div>
-      `;
-
-    });
-
-  } catch (error) {
-
-    console.log(error);
-
-  }
+  data.data.forEach(gif => {
+    gifContainer.innerHTML += `
+      <div class="col-3 mb-3">
+        <img src="${gif.images.original.url}" class="img-fluid">
+      </div>
+    `;
+  });
 
 });
