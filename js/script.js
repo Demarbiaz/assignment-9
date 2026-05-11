@@ -1,4 +1,4 @@
-const apiKey = "3rKARaLAZ6zBKslkr2jFL5otbJIp8xuH";
+const apiKey = "SHbeBWs0oAA9buIfuIsa9qwNAgputUN5";
 
 const gifContainer = document.querySelector("#gif-container");
 const fetchBtn = document.querySelector("#fetch-gif-btn");
