@@ -8,11 +8,6 @@ fetchBtn.addEventListener("click", async () => {
 
   const searchTerm = searchInput.value;
 
-  if (!searchTerm) {
-    alert("Type something to search!");
-    return;
-  }
-
   gifContainer.innerHTML = "";
 
   const endpoint =
