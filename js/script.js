@@ -10,31 +10,31 @@ fetchBtn.addEventListener("click", async () => {
 
   gifContainer.innerHTML = "";
 
-  const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=12&rating=g`;
+  const endpoint =
+    `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=12&rating=g`;
 
   try {
 
-    
     const response = await fetch(endpoint);
 
     const data = await response.json();
 
-    const images = data.data.map((gif) => {
-      return gif.images.original.url;
-    });
+    console.log(data);
 
-    console.log(images);
+    data.data.forEach((gif) => {
 
-    images.forEach((imageUrl) => {
       gifContainer.innerHTML += `
         <div class="col-3 mb-3">
-          <img src="${imageUrl}" class="img-fluid">
+          <img src="${gif.images.original.url}" class="img-fluid">
         </div>
       `;
+
     });
 
   } catch (error) {
-    console.log("Error fetching gifs:", error);
+
+    console.log(error);
+
   }
 
 });
